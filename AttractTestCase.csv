@@ -109,7 +109,27 @@ User with invalid password created.",Show password format validation error
 6. Press submit Registration button","Redirects to user list page.
 User with empty Date of Birth created.","Redirects to user list page.
 User with empty Date of Birth created."
-,21,,,,
+,21,User can be registered with valid Date of birth.,"1. Go to Registration form
+2. Fill Captcha field
+3. Fill Email field with “aaa@somemail.com”
+4. Fill Password with ”7890katya333”
+5. Fill Date of Birth field with 2016-10-10
+6. Press submit Registration button","Redirects to user list page.
+User with valid Date of Birth created.","Redirects to user list page.
+User with valid Date of Birth created."
+,22,When user enters invalid Date of birth to Birth date field user can be created with this data and error is not shown,"1. Go to Registration form
+2. Fill Captcha field
+3. Fill Email field with “aaa@somemail.com”
+4. Fill Password with ”7890katya333”
+5. Fill Date of Birth field with 123765–07
+6. Press submit Registration button","Redirects to user list page.
+User with invalid Date of birth created.",Show Date of birth format validation error.
+,23,User can’t enter in the Data of birth field is nothing except characters and dashes.,"1. Go to Registration form
+2. Fill Captcha field
+3. Fill Email field with “aaa@somemail.com”
+4. Fill Password with ”7890katya333”
+5. Fill Date of Birth field with B
+",User can’t enter in the Data of birth field is nothing except characters and dashes.,User can’t enter in the Data of birth field is nothing except characters and dashes.
 ,8,User can be created with invalid phone number. If user decided to enter phone number it should be according to format,"1. Go to Registration form
 2. Fill Captcha field
 3. Fill Email field with “katya@mailinator.com”
