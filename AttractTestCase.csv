@@ -1,0 +1,149 @@
+Test Case for Registration form,,,,,
+1,№ test case,Description,Steps,Actual results,Expected results
+,1,"Registration form doesn’t show any errors when all fields except Captcha are empty.
+Should validate at least email and user name","1.Go to http://qatestask.php-cd.attractgroup.com/index.php?action=register2.Go to Registration form
+2. Fill Captcha field
+3. Leave all other fields blank
+4. Press submit Registration button", Redirects to user list  page,Shows validation error on registration form
+,2,User with valid email which contains 256 symbols  should be created,"1.Go to Registration form
+2.Fill Email field with valid email address which contains 256 symbols 
+3.Fill Captcha field
+4.Press submit Registration button
+",Redirect to user list page. User was created with this email.,Redirect to user list page. User was created with this email.
+,3,Email address which contains more than 256 symbols should be cat. That because this field can contains 256 symbols.,"1.Go to Registration form
+2.Fill Email field with valid email address which contains 257 symbols
+3.Fill Captcha field
+4.Press submit Registration button",Redirect to user list page. User was created with this email but this email was cat.,Redirect to user list page. User was created with this email but this email was cat.
+,4,When user enters invalid email to email field user can be created with this email and error is not shown,"1. Go to Registration form
+2. Fill Captcha field
+3. Fill Email field with “aaa@@somemail.com” (allows any format with letters,dots and “@” symbols)
+4. Press submit Registration button","Redirects to user list page
+User with invalid email created",Show email format validation error
+,5,Email is credential for authorization so it should be unique. Currently when users with equal emails can be registered,"1. Go to Registration form
+2. Fill Captcha field
+3. Fill Email field with “aaa@somemail.com”
+4. Press submit Registration button
+5. Go to Registration form
+6. Fill Captcha field
+7. Fill Email with the same value “aaa@somemail.com”
+8. Press submit Registration button",User with equal emails created and shown on user list page,Show email uniqueness validation error
+,6,HTML injection did not work in Email field,"1. Go to Registration form
+2. Fill Captcha field 
+3. Fill Email field with “<h2>aaa4@mailinator.com</h2>” 4. Press submit Registration button",Redirect to user list page. User was created with this email. The font is not changed.,Redirect to user list page. User was created with this email. The font is not changed.
+,7,Scripting injection did not work,"1. Go to Registration form
+2. Fill Captcha field 
+3. Fill Email field with “<script>alert(111)</script>”
+ 4. Press submit Registration button",Redirect to user list page. User was created with this email. No warning was not shown.,Redirect to user list page. User was created with this email. No warning was not shown.
+,8,"When user enters more than 10 symbols in Name field on registration form, application allows it but implicitly cut it to 10 symbols. There should be warning about cutting name or full name should save and shown","1. Go to Registration form
+2. Fill Captcha field
+3. Fill Email field with “katya@mailinator.com”
+4. Fill Name with katyakatya1 (11symbols)
+5. Press submit Registration button",User was created with “katyakatya” name,Show validation error that maximal name length is 10 symbols.
+,9,User can be saved with name without any letters,"1. Go to Registration form
+2. Fill Captcha field
+3. Fill Email field with “katya@mailinator.com”
+4. Fill Name with 12
+5. Press submit Registration button",User was created with “12” name,Show name validation error: Name should include letters.
+,10,User should create with valid name,"1.Go to Registranion form
+2.Fill Captcha field
+3.Fill Email field with “katya@mailinator.com”
+4.Fill Name field with “Motya”
+5.Press submit Registration button",New user was created with name “Motya”,New user was created with name “Motya”.
+,11,HTML injection did not work in Name field,"1. Go to Registration form
+2. Fill Captcha field 
+3. Fill Email field with “katya@mailinator.com”
+4. Fill Name field with “<h1>katy</h1>”
+5. Press submit Registration button",New user was created with name “<h1>katy</h1>”. The font is not changed.,New user was created with name “<h1>katy</h1>”. The font is not changed.
+,12,Scripting injection did not work in Name field,"1. Go to Registration form
+2. Fill Captcha field 
+3. Fill Email field with “katya@mailinator.com”
+4. Fill Name field with “<script>alert(111)</script>”
+5. Press submit Registration button",New user was created with name “<script>al”. Because scripting injection did not work and maximal name length is 10 symbols.,New user was created with name “<script>al”.
+,13,User can be registered with empty password. It is not safe.,"1. Go to Registration form
+2. Fill Captcha field
+3. Fill Email field with “aaa@somemail.com”
+4. Leave Password field blank
+5. Press submit Registration button",User was created without password.,Should show password validation error message. User can’t be registered without password. 
+,14,User can be registered with password less than 6 symbols. It is not safe,"1. Go to Registration form
+2. Fill Captcha field
+3. Fill Email field with “aaa@somemail.com”
+4. Fill Password with “1”
+5. Press submit Registration button",User was created with password “1”.,Show password validation error: Password should contain at least 6 symbols.
+,15,User should create with valid password which contains 58 symbols.,"1. Go to Registration form
+2. Fill Captcha field
+3. Fill Email field with “aaa@somemail.com”
+4. Fill Password with “12345678901234567890123456789012345678901234567890katya333”
+5. Press submit Registration button",User was created with this password.,User was created with this password.
+,16,User can’t enter password which contains more than 58 symbols. ,"1. Go to Registration form
+2. Fill Captcha field
+3. Fill Email field with “aaa@somemail.com”
+4. Fill Password with “12345678901234567890123456789012345678901234567890katya3333”
+5. Press submit Registration button",User can’t enter 59 symbols into Password field.,User can’t enter 59 symbols into Password field.
+,17,User can be saved with password without any characters. It is not safe. ,"1. Go to Registration form
+2. Fill Captcha field
+3. Fill Email field with “aaa@somemail.com”
+4. Fill Password with “a”
+5. Press submit Registration button",User was created with this password.,Should show password validation error: Password should contain at least 6 symbols(letters and characters).
+,18,Password is credential for authorization so it should be unique. Currently when users with equal passwords can be registered.,"1. Go to Registration form
+2. Fill Captcha field
+3. Fill Email field with “aaa@somemail.com”
+4. Fill Password with “7890katya333”
+5. Press submit Registration button
+6.Go to Registration form
+7. Fill Captcha field
+8. Fill Email field with “aaa@somemail.com”
+9. Fill Password with the same value “7890katya333”
+10. Press submit Registration button
+",Users were created with same passwords.,Show password uniqueness validation error.
+,19,When user enters invalid password to Password field user can be created with this password and error is not shown.,"1. Go to Registration form
+2. Fill Captcha field
+3. Fill Email field with “aaa@somemail.com”
+4. Fill Password which contains “20 spaces,11111111111111111111 and 18 spaces”
+5. Press submit Registration button","Redirects to user list page.
+User with invalid password created.",Show password format validation error
+,20,User can be registered with empty date of birth.,"1. Go to Registration form
+2. Fill Captcha field
+3. Fill Email field with “aaa@somemail.com”
+4. Fill Password with ”7890katya333”
+5. Leave Date of Birth field blank
+6. Press submit Registration button","Redirects to user list page.
+User with empty Date of Birth created.","Redirects to user list page.
+User with empty Date of Birth created."
+,21,,,,
+,8,User can be created with invalid phone number. If user decided to enter phone number it should be according to format,"1. Go to Registration form
+2. Fill Captcha field
+3. Fill Email field with “katya@mailinator.com”
+4. Fill Phone number with “577=-0099*&^1sdff” 
+5. Press submit Registration button",User was created with invalid phone number,Show phone number validation error: Phone number should have proper format
+,9,Two users currently can have the same phone number. It should be unique,"1. Go to Registration form
+2. Fill Captcha field
+3. Fill Email field with “katya@mailinator.com”
+4. Fill Phone number with “44444”
+5. Press submit Registration button
+6. Go to Registration form
+7. Fill Captcha field
+8. Fill Email field with “katya1@mailinator.com”
+9. Fill Phone number with “44444”
+10. Press submit Registration button
+",Two users were created with same email,Show error “Phone number is already in use”
+,10,If user decided to enter date of birth it should be in valid date format or it could cause errors in parsing,"1. Go to Registration form
+2. Fill Captcha field
+3. Fill Email field with “katya@mailinator.com”
+4. Fill Data of birth with “------------” 
+5. Press submit Registration button",Creates user with invalid date of birth format,Show date of birth format validation error
+,11,When user clicks on restore password email should  be sent. Currently nothing happens,"1. Go to Registration form
+2. Fill Captcha field
+3. Fill Email field with “katya@mailinator.com”
+4. Fill Password with “123456”
+5. Press submit Registration button
+6. Go to Authorization form
+7. Click Restore password button
+8. Fill Email field with “katya@mailinator.com”",See email was sent notification but nothing happens,Email should be sent to “katya@mailinator.com”
+,12,Currently authorization form redirects user to main page even if all fields are empty. Authorization form should redirect to main page only if credentials are valid so in case if credentials are empty it should show an error,"1. Go to Authorization form
+2. Leave all field blank
+3. Click Authorization button",Redirects to main page,Should show email can’t be blank error
+,13,Authorization form redirects to main page even with invalid credentials. Should show error instead,"1. Go to Authorization form
+2. Fill Email field with “asd----123@incorrectmail.com”
+3. Fill Password with “123IncorrectPass”
+4. Click Authorization button",Redirects to main page,Should show invalid email or password error
+,14,Currently any user can see list of users. Application has registration form and authorization form which redirect to users list. So only authorized users should be able to access users list page,1. Click on “Главная” link,List of users shown,Should redirect to authorization page
