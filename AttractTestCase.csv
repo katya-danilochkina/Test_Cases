@@ -163,7 +163,7 @@ User with valid Date of Birth created."
 2. Fill all fields except Captcha field
 3. Leave Captcha field blank
 4. Press submit Registration button",Show Captcha validation error: Incorrect Captcha.,Show Captcha validation error: Incorrect Captcha.
-,11,When user clicks on restore password in authorization form email should  be sent. Currently nothing happens.,"1. Go to Registration form
+,30,When user clicks on restore password in authorization form email should  be sent. Currently nothing happens.,"1. Go to Registration form
 2. Fill Captcha field
 3. Fill Email field with “katya@mailinator.com”
 4. Fill Password with “123456”
@@ -171,11 +171,11 @@ User with valid Date of Birth created."
 6. Go to Authorization form
 7. Click Restore password button
 8. Fill Email field with “katya@mailinator.com”",See email was sent notification but nothing happens.,Email should be sent to “katya@mailinator.com”.
-,12,Currently authorization form redirects user to main page even if all fields are empty. Authorization form should redirect to main page only if credentials are valid so in case if credentials are empty it should show an error.,"1. Go to Authorization form
+,31,Currently authorization form redirects user to main page even if all fields are empty. Authorization form should redirect to main page only if credentials are valid so in case if credentials are empty it should show an error.,"1. Go to Authorization form
 2. Leave all field blank
-3. Click Authorization button",Redirects to main page,Should show email can’t be blank error
-,13,Authorization form redirects to main page even with invalid credentials. Should show error instead.,"1. Go to Authorization form
+3. Click Authorization button",Redirects to main page.,Should show email can’t be blank error.
+,32,Authorization form redirects to main page even with invalid credentials. Should show error instead.,"1. Go to Authorization form
 2. Fill Email field with “asd----123@incorrectmail.com”
 3. Fill Password with “123IncorrectPass”
-4. Click Authorization button",Redirects to main page,Should show invalid email or password error
-,14,Currently any user can see list of users. Application has registration form and authorization form which redirect to users list. So only authorized users should be able to access users list page.,1. Click on “Главная” link,List of users shown,Should redirect to authorization page
+4. Click Authorization button",Redirects to main page.,Should show invalid email or password error.
+,33,Currently any user can see list of users. Application has registration form and authorization form which redirect to users list. So only authorized users should be able to access users list page.,1. Click on “Главная” link,List of users shown.,Should redirect to authorization page.
